@@ -1,0 +1,40 @@
+#include "main.h"
+
+/**
+ * Handle the format specifier
+ * @specifier: the format specifier charachter
+ * @args: the va_list of arguments.
+ *
+ * return: the number of chrachters printed.
+ */
+
+int	handle_format_specifier(char specifier, va_list args)
+{
+	if (specifier == 'c')
+		return (_putchar(va_arg(args, int)));
+	else if (specifier == 's')
+		return (print_string(va_arg(args, char *)));
+	else if (specifier == '%')
+		return (_putchar('%'));
+	else if (specifier == 'd' || specifier == 'i')
+		return (print_number(va_arg(args, int)));
+	else if (specifier == 'b')
+		return (print_binary(va_arg(args, unsigned int)));
+	else if (specifier == 'u')
+		return (print_unsigned_number(va_arg(args, unsigned int)));
+	else if (specifier == 'o')
+		return (print_octal(va_arg(args, unsigned int)));
+	else if (specifier == 'x')
+		return (print_hexadecimal(va_arg(args, unsigned int), 0));
+	else if (specifier == 'X')
+		return (print_hexadecimal(va_arg(args, unsigned int), 1));
+	else if (specifier == 'S')
+		return (print_npc(va_arg(args, char *)));
+	else if (specifier == 'r')
+		return (rev_str(va_arg(args, char *)));
+	else if (specifier == 'R')
+		return (rot13(va_arg(args, char *)));
+	_putchar('%');
+	_putchar(specifier);
+	return (2);
+}
